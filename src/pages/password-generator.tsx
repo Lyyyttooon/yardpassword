@@ -1,4 +1,4 @@
-import { reserveChar, getRandomNumber } from '@/utils/password';
+import { getRandomNumber } from '@/utils/password';
 import { useEffect } from 'react';
 
 export default function PasswordGenerator() {
