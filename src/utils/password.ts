@@ -1,5 +1,5 @@
 interface ReserveChar {
-  readonly uppercase: string;
+  readonly [uppercase: string]: string;
   readonly lowercase: string;
   readonly number: string;
   readonly specialCharacter: string;
@@ -13,13 +13,20 @@ export const reserveChar: ReserveChar = {
   specialCharacter: '!@#$%^&*',
 };
 
+interface generateConfig {
+  readonly [uppercase: string]: boolean;
+  readonly lowercase: boolean;
+  readonly number: boolean;
+  readonly specialCharacter: boolean;
+}
+
 // defaultConfig 默认配置
-const defaultConfig = {
-  uppercase: true,
-  lowercase: true,
-  number: true,
-  specialCharacter: false,
-};
+// const defaultConfig: generateConfig = {
+//   uppercase: true,
+//   lowercase: true,
+//   number: true,
+//   specialCharacter: false,
+// };
 
 // getRandomNumber 获取随机数字，默认(0-255)
 export function getRandomNumber(minNum: number = 0, maxNum: number = 255): number {
@@ -45,5 +52,25 @@ export function getRandomNumber(minNum: number = 0, maxNum: number = 255): numbe
   return num;
 }
 
+export function generatePassword(textLength: number = 16, curConfig: generateConfig) {
+  let selectArray = [];
+  for (let i in curConfig) {
+    if (!curConfig[i]) {
+      continue;
+    }
+    selectArray.push(i);
+  }
+  let password = getRandomText(textLength, selectArray);
+  for (let i = 0; i < password.length; i++) {}
+}
+
 // getRandomText 获取随机字符
-export function getRandomText(textLength: number = 16, f: (arg: object) => {}) {}
+export function getRandomText(textLength: number = 16, selectArray: Array<string>) {
+  let password = '';
+  for (let i = 0; i < textLength; i++) {
+    let num = getRandomNumber(0, selectArray.length);
+    let textArray = reserveChar[selectArray[num]];
+    password = password + textArray[getRandomNumber(0, textArray.length)];
+  }
+  return password;
+}

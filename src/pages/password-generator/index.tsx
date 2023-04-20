@@ -1,4 +1,4 @@
-import { getRandomNumber } from '@/utils/password';
+import { getRandomNumber, getRandomText } from '@/utils/password';
 import { Button } from 'antd';
 import { useEffect, useState } from 'react';
 
@@ -12,7 +12,7 @@ export default function PasswordGenerator() {
 
   useEffect(() => {
     console.log('执行useEffect');
-    // console.log(getRandomNumber(0, 8));
+    console.log(getRandomText(16, ['uppercase', 'lowercase', 'number', 'specialCharacter']));
   });
 
   return (
