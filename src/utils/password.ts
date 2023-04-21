@@ -30,11 +30,16 @@ interface generateConfig {
 
 // getRandomNumber 获取随机数字，默认(0-255)
 export function getRandomNumber(minNum: number = 0, maxNum: number = 255): number {
+  // 规范化最大最小范围
   minNum = Math.ceil(minNum);
   maxNum = Math.floor(maxNum);
   if (maxNum > 255) {
     maxNum = 255;
   }
+  if (minNum < 0) {
+    minNum = 0;
+  }
+
   if (minNum != 0) {
     maxNum = maxNum - minNum;
   }
@@ -46,12 +51,11 @@ export function getRandomNumber(minNum: number = 0, maxNum: number = 255): numbe
   let num = numArray[0];
   if (num < maxNum) {
     return num + minNum;
-  } else {
-    num = (num % maxNum) + minNum;
   }
-  return num;
+  return (num % maxNum) + minNum;
 }
 
+// generatePassword 生成密码
 export function generatePassword(textLength: number = 16, curConfig: generateConfig) {
   let selectArray = [];
   for (let i in curConfig) {
@@ -61,16 +65,31 @@ export function generatePassword(textLength: number = 16, curConfig: generateCon
     selectArray.push(i);
   }
   let password = getRandomText(textLength, selectArray);
-  for (let i = 0; i < password.length; i++) {}
+
+  // 检查生成的密码是否符合规定
+  for (let i = 0; i < selectArray.length; i++) {
+    let reserveText = reserveChar[selectArray[i]];
+    let hasChar = false;
+    for (let x = 0; x < password.length; x++) {
+      if (reserveText.indexOf(password[x])) {
+        hasChar = true;
+        continue;
+      }
+    }
+    if (!hasChar) {
+      password = generatePassword(textLength, curConfig);
+    }
+  }
+  return password;
 }
 
 // getRandomText 获取随机字符
 export function getRandomText(textLength: number = 16, selectArray: Array<string>) {
-  let password = '';
+  let text = '';
   for (let i = 0; i < textLength; i++) {
     let num = getRandomNumber(0, selectArray.length);
     let textArray = reserveChar[selectArray[num]];
-    password = password + textArray[getRandomNumber(0, textArray.length)];
+    text = text + textArray[getRandomNumber(0, textArray.length)];
   }
-  return password;
+  return text;
 }
