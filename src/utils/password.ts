@@ -21,12 +21,12 @@ interface generateConfig {
 }
 
 // defaultConfig 默认配置
-// const defaultConfig: generateConfig = {
-//   uppercase: true,
-//   lowercase: true,
-//   number: true,
-//   specialCharacter: false,
-// };
+export const defaultConfig: generateConfig = {
+  uppercase: true,
+  lowercase: true,
+  number: true,
+  specialCharacter: false,
+};
 
 // getRandomNumber 获取随机数字，默认(0-255)
 export function getRandomNumber(minNum: number = 0, maxNum: number = 255): number {
