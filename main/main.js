@@ -69,6 +69,9 @@ function createWindow() {
 // 限制器
 makeSingleInstance();
 
+// 启用沙盒
+app.enableSandbox();
+
 // app主进程的事件和方法
 // 只有在ready事件被激发后才能创建浏览器窗口
 app.whenReady().then(() => {
