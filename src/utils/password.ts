@@ -13,7 +13,7 @@ export const reserveChar: ReserveChar = {
   specialCharacter: '!@#$%^&*',
 };
 
-interface generateConfig {
+export interface generateConfig {
   readonly [uppercase: string]: boolean;
   readonly lowercase: boolean;
   readonly number: boolean;
