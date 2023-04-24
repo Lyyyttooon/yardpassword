@@ -29,7 +29,7 @@ export const defaultConfig: generateConfig = {
 };
 
 // getRandomNumber 获取随机数字，默认(0-255)
-export function getRandomNumber(minNum: number = 0, maxNum: number = 255): number {
+export function getRandomNumber(minNum = 0, maxNum = 255): number {
   // 规范化最大最小范围
   minNum = Math.ceil(minNum);
   maxNum = Math.floor(maxNum);
@@ -43,12 +43,12 @@ export function getRandomNumber(minNum: number = 0, maxNum: number = 255): numbe
   if (minNum != 0) {
     maxNum = maxNum - minNum;
   }
-  let numArray = new Uint8Array(1);
+  const numArray = new Uint8Array(1);
   if (typeof window === 'undefined' || window.crypto == undefined) {
     return Math.random() * maxNum + minNum;
   }
   window.crypto.getRandomValues(numArray);
-  let num = numArray[0];
+  const num = numArray[0];
   if (num < maxNum) {
     return num + minNum;
   }
@@ -56,9 +56,9 @@ export function getRandomNumber(minNum: number = 0, maxNum: number = 255): numbe
 }
 
 // generatePassword 生成密码
-export function generatePassword(textLength: number = 16, curConfig: generateConfig) {
-  let selectArray = [];
-  for (let i in curConfig) {
+export function generatePassword(textLength = 16, curConfig: generateConfig) {
+  const selectArray = [];
+  for (const i in curConfig) {
     if (!curConfig[i]) {
       continue;
     }
@@ -68,7 +68,7 @@ export function generatePassword(textLength: number = 16, curConfig: generateCon
 
   // 检查生成的密码是否符合规定
   for (let i = 0; i < selectArray.length; i++) {
-    let reserveText = reserveChar[selectArray[i]];
+    const reserveText = reserveChar[selectArray[i]];
     let hasChar = false;
     for (let x = 0; x < password.length; x++) {
       if (reserveText.indexOf(password[x])) {
@@ -84,11 +84,11 @@ export function generatePassword(textLength: number = 16, curConfig: generateCon
 }
 
 // getRandomText 获取随机字符
-export function getRandomText(textLength: number = 16, selectArray: Array<string>) {
+export function getRandomText(textLength = 16, selectArray: Array<string>) {
   let text = '';
   for (let i = 0; i < textLength; i++) {
-    let num = getRandomNumber(0, selectArray.length);
-    let textArray = reserveChar[selectArray[num]];
+    const num = getRandomNumber(0, selectArray.length);
+    const textArray = reserveChar[selectArray[num]];
     text = text + textArray[getRandomNumber(0, textArray.length)];
   }
   return text;
