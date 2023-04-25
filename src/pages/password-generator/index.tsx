@@ -13,7 +13,7 @@ export default function PasswordGenerator() {
 
   useEffect(() => {
     let hasTrue = false;
-    for (let i in generateConfig) {
+    for (const i in generateConfig) {
       if (generateConfig[i]) {
         hasTrue = true;
       }
