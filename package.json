@@ -5,13 +5,24 @@
   "private": true,
   "main": "main/main.js",
   "scripts": {
+    "clean": "rimraf dist .next out",
     "dev": "next dev",
-    "build": "next build && next export -o build",
+    "build": "npm run clean && next build",
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write .",
     "electron:dev": "electron . dev",
-    "electron": "electron ."
+    "electron": "electron .",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder"
+  },
+  "build": {
+    "asar": true,
+    "files": [
+      "main",
+      "out",
+      "!node_modules"
+    ]
   },
   "repository": {
     "type": "git",
