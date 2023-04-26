@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { app, BrowserWindow, ipc } = require('electron');
 const path = require('path');
 let mainWindow = null;
@@ -48,7 +49,7 @@ function createWindow() {
     mainWindow.webContents.openDevTools(); // 自动打开控制台
     createDevTools();
   } else {
-    mainWindow.loadURL(path.join('file://', __dirname, '../build/index.html'));
+    mainWindow.loadURL(path.join('file://', __dirname, '../out/index.html'));
   }
   //接收渲染进程的信息
   ipc.on('min', function () {
