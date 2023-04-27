@@ -1,6 +1,8 @@
-import { generatePassword, defaultConfig } from '@/utils/password';
-import { Button, Switch, Form } from 'antd';
+import { Button } from 'antd';
 import { useEffect, useState } from 'react';
+
+import PasswordForm from '@/components/password-form';
+import { generatePassword, defaultConfig } from '@/utils/password';
 
 export default function PasswordGenerator() {
   const [passwordText, setPasswordText] = useState('');
@@ -27,59 +29,7 @@ export default function PasswordGenerator() {
   return (
     <div>
       <h1>{passwordText}</h1>
-      <Form
-        name="basic"
-        labelCol={{ span: 16 }}
-        wrapperCol={{ span: 24 }}
-        style={{ maxWidth: 600 }}
-        initialValues={{ remember: true }}
-        autoComplete="off"
-      >
-        <Form.Item label="大写字母">
-          <Switch
-            checked={generateConfig.uppercase}
-            onChange={(e) =>
-              setGenerateConfig({
-                ...generateConfig,
-                uppercase: e,
-              })
-            }
-          />
-        </Form.Item>
-        <Form.Item label="小写字母">
-          <Switch
-            checked={generateConfig.lowercase}
-            onChange={(e) =>
-              setGenerateConfig({
-                ...generateConfig,
-                lowercase: e,
-              })
-            }
-          />
-        </Form.Item>
-        <Form.Item label="数字">
-          <Switch
-            checked={generateConfig.number}
-            onChange={(e) =>
-              setGenerateConfig({
-                ...generateConfig,
-                number: e,
-              })
-            }
-          />
-        </Form.Item>
-        <Form.Item label="特殊字符">
-          <Switch
-            checked={generateConfig.specialCharacter}
-            onChange={(e) =>
-              setGenerateConfig({
-                ...generateConfig,
-                specialCharacter: e,
-              })
-            }
-          />
-        </Form.Item>
-      </Form>
+      <PasswordForm generateConfig={generateConfig} onChange={setGenerateConfig} />
       <Button onClick={flushClick}>刷新</Button>
     </div>
   );
