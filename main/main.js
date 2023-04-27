@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { app, BrowserWindow, ipc } = require('electron');
 const path = require('path');
-let mainWindow = null;
-//判断命令行脚本的第二参数
+
+// 判断命令行脚本的第二参数
 const mode = process.argv[2];
+let mainWindow = null;
 
 // 限制只启动一个
 function makeSingleInstance() {
@@ -24,9 +25,7 @@ function createDevTools() {
     REACT_DEVELOPER_TOOLS,
     REDUX_DEVTOOLS,
   } = require('electron-devtools-installer');
-  // 安装devtron
-  const devtronExtension = require('devtron');
-  devtronExtension.install();
+
   // 安装React开发者工具
   installExtension(REACT_DEVELOPER_TOOLS);
   installExtension(REDUX_DEVTOOLS);
@@ -43,7 +42,8 @@ function createWindow() {
     // frame:false, // 有没有边框
   };
   mainWindow = new BrowserWindow(windowOptions);
-  //判断是否是开发模式
+
+  // 判断是否是开发模式
   if (mode === 'dev') {
     mainWindow.loadURL('http://localhost:3000/'); // 前端开发环境地址
     mainWindow.webContents.openDevTools(); // 自动打开控制台
@@ -51,7 +51,8 @@ function createWindow() {
   } else {
     mainWindow.loadURL(path.join('file://', __dirname, '../out/index.html'));
   }
-  //接收渲染进程的信息
+
+  // 接收渲染进程的信息
   ipc.on('min', function () {
     mainWindow.minimize();
   });
@@ -82,15 +83,18 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
+
 // 关闭所有窗口通常会完全退出一个应用程序
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
+
 app.on('activate', () => {
   if (mainWindow === null) {
     createWindow();
   }
 });
+
 module.exports = mainWindow;
