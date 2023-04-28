@@ -10,7 +10,7 @@ export default function PasswordGenerator() {
 
   // 刷新按钮
   function flushClick() {
-    setPasswordText(generatePassword(16, generateConfig));
+    setPasswordText(generatePassword(generateConfig));
   }
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function PasswordGenerator() {
     if (!hasTrue) {
       generateConfig.lowercase = true;
     }
-    setPasswordText(generatePassword(16, generateConfig));
+    setPasswordText(generatePassword(generateConfig));
   }, [generateConfig]);
 
   return (

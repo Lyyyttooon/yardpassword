@@ -14,7 +14,9 @@ export const reserveChar: ReserveChar = {
 };
 
 export interface generateConfig {
-  readonly [uppercase: string]: boolean;
+  [key: string]: boolean | number;
+  readonly textLength: number;
+  readonly uppercase: boolean;
   readonly lowercase: boolean;
   readonly number: boolean;
   readonly specialCharacter: boolean;
@@ -22,6 +24,7 @@ export interface generateConfig {
 
 // defaultConfig 默认配置
 export const defaultConfig: generateConfig = {
+  textLength: 16,
   uppercase: true,
   lowercase: true,
   number: true,
@@ -30,6 +33,10 @@ export const defaultConfig: generateConfig = {
 
 // getRandomNumber 获取随机数字，默认(0-255)
 export function getRandomNumber(minNum = 0, maxNum = 255): number {
+  if (typeof window === 'undefined' || window.crypto == undefined) {
+    return getRandomNumber(minNum, maxNum);
+  }
+
   // 规范化最大最小范围
   minNum = Math.ceil(minNum);
   maxNum = Math.floor(maxNum);
@@ -39,14 +46,11 @@ export function getRandomNumber(minNum = 0, maxNum = 255): number {
   if (minNum < 0) {
     minNum = 0;
   }
-
   if (minNum != 0) {
     maxNum = maxNum - minNum;
   }
+
   const numArray = new Uint8Array(1);
-  if (typeof window === 'undefined' || window.crypto == undefined) {
-    return Math.random() * maxNum + minNum;
-  }
   window.crypto.getRandomValues(numArray);
   const num = numArray[0];
   if (num < maxNum) {
@@ -56,15 +60,15 @@ export function getRandomNumber(minNum = 0, maxNum = 255): number {
 }
 
 // generatePassword 生成密码
-export function generatePassword(textLength = 16, curConfig: generateConfig) {
+export function generatePassword(curConfig: generateConfig) {
   const selectArray = [];
   for (const i in curConfig) {
-    if (!curConfig[i]) {
+    if (!curConfig[i] || i === 'textLength') {
       continue;
     }
     selectArray.push(i);
   }
-  let password = getRandomText(textLength, selectArray);
+  let password = getRandomText(curConfig.textLength, selectArray);
 
   // 检查生成的密码是否符合规定
   for (let i = 0; i < selectArray.length; i++) {
@@ -77,7 +81,7 @@ export function generatePassword(textLength = 16, curConfig: generateConfig) {
       }
     }
     if (!hasChar) {
-      password = generatePassword(textLength, curConfig);
+      password = generatePassword(curConfig);
     }
   }
   return password;

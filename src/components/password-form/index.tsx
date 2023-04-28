@@ -13,10 +13,16 @@ interface Props {
 export default function PasswordForm(props: Props) {
   const { generateConfig, onChange } = props;
 
-  const [inputValue, setInputValue] = useState(1);
+  const [inputValue, setInputValue] = useState(generateConfig.textLength);
 
-  const onSliderChange = (newValue: number) => {
-    setInputValue(newValue);
+  const onSliderChange = (newValue: number | null) => {
+    if (newValue != null) {
+      setInputValue(newValue);
+      onChange({
+        ...generateConfig,
+        textLength: newValue,
+      });
+    }
   };
 
   return (
@@ -30,8 +36,8 @@ export default function PasswordForm(props: Props) {
     >
       <Form.Item label="长度">
         <Slider
-          min={1}
-          max={20}
+          min={5}
+          max={128}
           onChange={onSliderChange}
           value={typeof inputValue === 'number' ? inputValue : 0}
         />
@@ -40,7 +46,7 @@ export default function PasswordForm(props: Props) {
           max={20}
           style={{ margin: '0 16px' }}
           value={inputValue}
-          onChange={(e) => onSliderChange(e)}
+          onChange={onSliderChange}
         />
       </Form.Item>
       <Form.Item label="大写字母">
