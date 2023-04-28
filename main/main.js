@@ -47,21 +47,21 @@ function createWindow() {
   if (mode === 'dev') {
     mainWindow.loadURL('http://localhost:3000/'); // 前端开发环境地址
     mainWindow.webContents.openDevTools(); // 自动打开控制台
-    createDevTools();
+    // createDevTools();
   } else {
     mainWindow.loadURL(path.join('file://', __dirname, '../out/index.html'));
   }
 
   // 接收渲染进程的信息
-  ipc.on('min', function () {
-    mainWindow.minimize();
-  });
-  ipc.on('max', function () {
-    mainWindow.maximize();
-  });
-  ipc.on('login', function () {
-    mainWindow.maximize();
-  });
+  // ipc.on('min', function () {
+  //   mainWindow.minimize();
+  // });
+  // ipc.on('max', function () {
+  //   mainWindow.maximize();
+  // });
+  // ipc.on('login', function () {
+  //   mainWindow.maximize();
+  // });
 
   mainWindow.on('closed', () => {
     mainWindow = null;
