@@ -42,8 +42,8 @@ export default function PasswordForm(props: Props) {
           value={typeof inputValue === 'number' ? inputValue : 0}
         />
         <InputNumber
-          min={1}
-          max={20}
+          min={5}
+          max={128}
           style={{ margin: '0 16px' }}
           value={inputValue}
           onChange={onSliderChange}
