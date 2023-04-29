@@ -16,6 +16,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
+    show: false,
     // frame:false, // 有没有边框
   });
 
@@ -26,6 +27,13 @@ function createWindow() {
   } else {
     mainWindow.loadURL(path.join('file://', __dirname, '../out/index.html'));
   }
+
+  mainWindow.once('ready-to-show', () => {
+    // 防止窗口启动存在瞬间黑画面
+    setTimeout(() => {
+      mainWindow.show();
+    }, 300);
+  });
 
   mainWindow.on('closed', () => {
     mainWindow.destroy();
