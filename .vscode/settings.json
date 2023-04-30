@@ -4,11 +4,5 @@
     "source.fixAll.eslint": true
   },
   "editor.renderWhitespace": "all",
-  "editor.tabSize": 2,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "editor.tabSize": 2
 }

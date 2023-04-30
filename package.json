@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rimraf dist .next out",
     "dev": "next dev",
-    "build": "npm run clean && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write .",
