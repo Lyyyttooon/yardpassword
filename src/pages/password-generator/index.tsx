@@ -2,6 +2,8 @@ import { Button, message } from 'antd';
 import { useEffect, useState } from 'react';
 
 import PasswordForm from '@/components/password-form';
+import PasswordText from '@/components/password-text';
+
 import { generatePassword, defaultConfig } from '@/utils/password';
 
 export default function PasswordGenerator() {
@@ -43,7 +45,7 @@ export default function PasswordGenerator() {
     <>
       {contextHolder}
       <div>
-        <h1>{passwordText}</h1>
+        <PasswordText text={passwordText}></PasswordText>
         <PasswordForm generateConfig={generateConfig} onChange={setGenerateConfig} />
         <Button onClick={flushClick}>刷新</Button>
         <Button style={{ marginLeft: '3px' }} onClick={copyClick}>
