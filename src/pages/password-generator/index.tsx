@@ -44,7 +44,7 @@ export default function PasswordGenerator() {
   return (
     <>
       {contextHolder}
-      <div>
+      <div className="w-600">
         <PasswordText text={passwordText}></PasswordText>
         <PasswordForm generateConfig={generateConfig} onChange={setGenerateConfig} />
         <Button onClick={flushClick}>刷新</Button>

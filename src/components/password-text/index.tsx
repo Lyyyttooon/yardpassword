@@ -39,5 +39,5 @@ export default function PasswordText(props: Props) {
 
   useEffect(textStyle, [text]);
 
-  return <span>{styleText}</span>;
+  return <div className="w-full break-all">{styleText}</div>;
 }
