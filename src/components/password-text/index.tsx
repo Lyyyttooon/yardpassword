@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { reserveChar } from '@/utils/password';
+import { ReloadOutlined, CopyOutlined } from '@ant-design/icons';
 
 interface Props {
   text: string;
@@ -39,5 +40,13 @@ export default function PasswordText(props: Props) {
 
   useEffect(textStyle, [text]);
 
-  return <div className="w-full break-all">{styleText}</div>;
+  return (
+    <div className="flex justify-between w-full break-all p-2 border border-black rounded border-opacity-50">
+      <span className="w-10/12">{styleText}</span>
+      <span className="flex justify-evenly items-center w-2/12">
+        <ReloadOutlined />
+        <CopyOutlined />
+      </span>
+    </div>
+  );
 }
