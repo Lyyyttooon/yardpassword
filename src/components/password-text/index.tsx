@@ -1,14 +1,20 @@
 import { useEffect, useState } from 'react';
 import { reserveChar } from '@/utils/password';
 import { ReloadOutlined, CopyOutlined } from '@ant-design/icons';
+import { message } from 'antd';
+
+type onClick = () => void;
 
 interface Props {
   text: string;
+  onReloadClick: onClick;
 }
 
 export default function PasswordText(props: Props) {
-  const { text } = props;
+  const { text, onReloadClick } = props;
   const ele: JSX.Element[] = [];
+
+  const [messageApi, contextHolder] = message.useMessage();
 
   const [styleText, setStyleText] = useState(ele);
 
@@ -38,15 +44,36 @@ export default function PasswordText(props: Props) {
     }
   }
 
+  function reloadClick() {
+    onReloadClick();
+  }
+
+  function copyClick() {
+    navigator.clipboard.writeText(text).then(
+      function () {
+        messageApi.info('复制成功！');
+      },
+      function (err: Error) {
+        messageApi.info('复制失败，原因：' + err);
+      }
+    );
+  }
+
   useEffect(textStyle, [text]);
 
   return (
-    <div className="flex justify-between w-full break-all p-2 border border-black rounded border-opacity-50">
-      <span className="w-10/12">{styleText}</span>
-      <span className="flex justify-evenly items-center w-2/12">
-        <ReloadOutlined />
-        <CopyOutlined />
-      </span>
-    </div>
+    <>
+      {contextHolder}
+      <div className="flex justify-between w-full break-all p-2 border border-black rounded-md border-opacity-50">
+        <span className="w-11/12">{styleText}</span>
+        <span className="flex justify-evenly items-center w-20">
+          <ReloadOutlined
+            className="hover:text-gray-700 active:text-gray-500"
+            onClick={reloadClick}
+          />
+          <CopyOutlined className="hover:text-gray-700 active:text-gray-500" onClick={copyClick} />
+        </span>
+      </div>
+    </>
   );
 }
