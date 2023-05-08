@@ -1,5 +1,6 @@
 interface ReserveChar {
-  readonly [uppercase: string]: string;
+  [key: string]: string;
+  readonly uppercase: string;
   readonly lowercase: string;
   readonly number: string;
   readonly specialCharacter: string;
