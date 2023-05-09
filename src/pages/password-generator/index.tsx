@@ -17,12 +17,14 @@ export default function PasswordGenerator() {
   useEffect(() => {
     let hasTrue = false;
     for (const i in generateConfig) {
-      if (generateConfig[i]) {
+      if (i !== 'textLength' && generateConfig[i]) {
         hasTrue = true;
       }
     }
     if (!hasTrue) {
-      generateConfig.lowercase = true;
+      setGenerateConfig({ ...generateConfig, lowercase: true });
+      setPasswordText(generatePassword({ ...generateConfig, lowercase: true }));
+      return;
     }
     setPasswordText(generatePassword(generateConfig));
   }, [generateConfig]);
