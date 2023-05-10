@@ -29,25 +29,29 @@ export default function PasswordForm(props: Props) {
     <Form
       name="basic"
       labelCol={{ span: 4 }}
-      wrapperCol={{ span: 14 }}
-      style={{ width: 600 }}
+      wrapperCol={{ span: 20 }}
       initialValues={{ remember: true }}
       autoComplete="off"
+      className="w-full"
     >
       <Form.Item label="长度">
-        <Slider
-          min={5}
-          max={128}
-          onChange={onSliderChange}
-          value={typeof inputValue === 'number' ? inputValue : 0}
-        />
-        <InputNumber
-          min={5}
-          max={128}
-          style={{ margin: '0 16px' }}
-          value={inputValue}
-          onChange={onSliderChange}
-        />
+        <span className="flex justify-between">
+          <Slider
+            className="w-10/12"
+            min={5}
+            max={128}
+            onChange={onSliderChange}
+            value={typeof inputValue === 'number' ? inputValue : 0}
+          />
+          <InputNumber
+            className="w-2/12"
+            min={5}
+            max={128}
+            style={{ margin: '0 16px' }}
+            value={inputValue}
+            onChange={onSliderChange}
+          />
+        </span>
       </Form.Item>
       <Form.Item label="大写字母">
         <Switch
