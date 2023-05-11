@@ -1,4 +1,5 @@
-import Head from 'next/head';
+'use client';
+
 import { useEffect, useState } from 'react';
 
 import PasswordForm from '@/components/password-form';
@@ -32,13 +33,10 @@ export default function PasswordGenerator() {
 
   return (
     <>
-      <Head>
-        <title>YardPassword</title>
-      </Head>
-      <main className="flex min-h-screen flex-col items-center p-24">
+      <div className="w-full md:w-3/4">
         <PasswordText text={passwordText} onReloadClick={flushClick}></PasswordText>
         <PasswordForm generateConfig={generateConfig} onChange={setGenerateConfig} />
-      </main>
+      </div>
     </>
   );
 }
