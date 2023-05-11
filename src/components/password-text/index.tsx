@@ -65,8 +65,8 @@ export default function PasswordText(props: Props) {
     <>
       {contextHolder}
       <div className="flex justify-between w-full break-all p-2 border border-black rounded-md border-opacity-50 mb-3">
-        <span className="w-11/12">{styleText}</span>
-        <span className="flex justify-evenly items-center w-20">
+        <span className="w-full">{styleText}</span>
+        <span className="flex justify-evenly items-center w-[60px]">
           <ReloadOutlined
             className="hover:text-gray-700 active:text-gray-500"
             onClick={reloadClick}

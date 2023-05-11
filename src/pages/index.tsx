@@ -7,7 +7,7 @@ export default function Index() {
       <Head>
         <title>YardPassword</title>
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main>
         <PasswordGenerator></PasswordGenerator>
       </main>
     </>
