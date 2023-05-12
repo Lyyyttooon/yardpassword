@@ -32,11 +32,9 @@ export default function PasswordGenerator() {
   }, [generateConfig]);
 
   return (
-    <>
-      <div className="w-full max-w-screen-sm">
-        <PasswordText text={passwordText} onReloadClick={flushClick}></PasswordText>
-        <PasswordForm generateConfig={generateConfig} onChange={setGenerateConfig} />
-      </div>
-    </>
+    <div className="w-full max-w-screen-sm">
+      <PasswordText text={passwordText} onReloadClick={flushClick}></PasswordText>
+      <PasswordForm generateConfig={generateConfig} onChange={setGenerateConfig} />
+    </div>
   );
 }
