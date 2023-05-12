@@ -1,7 +1,5 @@
 'use client';
 
-import PasswordGenerator from './password-generator/page';
-
 export default function Page() {
-  return <PasswordGenerator></PasswordGenerator>;
+  return <main>This is main page</main>;
 }

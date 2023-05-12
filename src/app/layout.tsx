@@ -1,3 +1,6 @@
+'use client';
+
+import MainMenu from '@/components/main-menu';
 import '@/styles/globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -6,7 +9,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <title>YardPassword</title>
       </head>
-      <body className="flex min-h-screen flex-col items-center p-10">{children}</body>
+      <body className="flex min-h-screen flex-col items-center p-10">
+        <MainMenu />
+        {children}
+      </body>
     </html>
   );
 }
