@@ -6,7 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <title>YardPassword</title>
       </head>
-      <body className="flex min-h-screen flex-col items-center p-24">{children}</body>
+      <body className="flex min-h-screen flex-col items-center p-10">{children}</body>
     </html>
   );
 }

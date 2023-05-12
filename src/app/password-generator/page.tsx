@@ -33,7 +33,7 @@ export default function PasswordGenerator() {
 
   return (
     <>
-      <div className="w-full md:w-3/4">
+      <div className="w-full max-w-screen-sm">
         <PasswordText text={passwordText} onReloadClick={flushClick}></PasswordText>
         <PasswordForm generateConfig={generateConfig} onChange={setGenerateConfig} />
       </div>
