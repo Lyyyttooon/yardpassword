@@ -7,6 +7,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
+  basePath: isProd ? '/out' : '',
   reactStrictMode: true,
   output: 'export',
   assetPrefix: isProd ? './' : '',
