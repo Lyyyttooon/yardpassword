@@ -4,12 +4,16 @@ import { Menu } from 'antd';
 
 const items: MenuProps['items'] = [
   {
-    label: <Link href="/">主页</Link>,
-    key: 'main-page',
+    label: <Link href="/password-manager">密码库</Link>,
+    key: 'password-manager',
   },
   {
-    label: <Link href="/password-generator">密码生成</Link>,
+    label: <Link href="/password-generator">生成器</Link>,
     key: 'password-generator',
+  },
+  {
+    label: <Link href="/settings">设置</Link>,
+    key: 'settings',
   },
 ];
 
