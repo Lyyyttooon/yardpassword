@@ -35,6 +35,10 @@ function createWindow() {
     }, 300);
   });
 
+  mainWindow.webContents.on('did-fail-load', function () {
+    mainWindow.loadURL(path.join('file://', __dirname, '../out/password-manager.html'));
+  });
+
   mainWindow.on('closed', () => {
     mainWindow.destroy();
   });
