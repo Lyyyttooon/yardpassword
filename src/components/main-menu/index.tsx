@@ -18,5 +18,5 @@ const items: MenuProps['items'] = [
 ];
 
 export default function MainMenu() {
-  return <Menu mode="inline" items={items} />;
+  return <Menu className="h-full w-[320px]" mode="inline" items={items} />;
 }

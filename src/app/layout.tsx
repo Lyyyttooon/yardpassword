@@ -10,10 +10,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>YardPassword</title>
       </head>
       <body className="flex h-full flex-row">
-        <div className="h-full w-[168px] flex-none">
+        <div className="h-full w-[320px] flex-none mr-[48px]">
           <MainMenu />
         </div>
-        <div className="w-full h-full flex-1 p-6">{children}</div>
+        <div className="w-full h-full flex-1 pt-[48px]">{children}</div>
       </body>
     </html>
   );
