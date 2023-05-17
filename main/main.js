@@ -35,8 +35,8 @@ function createWindow() {
     }, 300);
   });
 
-  mainWindow.webContents.on('did-fail-load', function () {
-    mainWindow.loadURL(path.join('file://', __dirname, '../out/password-manager.html'));
+  mainWindow.webContents.on('did-fail-load', function (_event, _code, _desc, url) {
+    mainWindow.loadURL(path.join('file://', __dirname, '../out/' + path.basename(url) + '.html'));
   });
 
   mainWindow.on('closed', () => {
@@ -50,7 +50,7 @@ app.enableSandbox();
 if (!gotTheLock) {
   app.quit();
 } else {
-  app.on('second-instance', (event, commandLine, workingDirectory, additionalData) => {
+  app.on('second-instance', (_event, _commandLine, _workingDirectory, additionalData) => {
     // Print out data received from the second instance.
     console.log(additionalData);
 
