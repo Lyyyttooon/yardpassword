@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="h-full w-[320px] flex-none mr-[48px]">
           <MainMenu />
         </div>
-        <div className="w-full h-full flex-1 pt-[48px]">{children}</div>
+        <div className="w-full h-full flex-1 pt-[32px]">{children}</div>
       </body>
     </html>
   );

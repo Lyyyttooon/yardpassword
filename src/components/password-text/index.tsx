@@ -64,7 +64,7 @@ export default function PasswordText(props: Props) {
   return (
     <>
       {contextHolder}
-      <div className="flex justify-between w-full break-all p-2 border border-black rounded-md border-opacity-50 mb-3">
+      <div className="flex justify-between w-full break-all p-2 border-2 border-black border-opacity-50 mb-3">
         <span className="w-full">{styleText}</span>
         <span className="flex justify-evenly items-center w-[60px]">
           <ReloadOutlined

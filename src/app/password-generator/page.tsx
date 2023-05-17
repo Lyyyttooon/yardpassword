@@ -32,8 +32,8 @@ export default function PasswordGenerator() {
   }, [generateConfig]);
 
   return (
-    <div className="w-full max-w-screen-sm">
-      <h1 className="text-3xl text-[#262626] mb-[32px]">生成器</h1>
+    <div className="w-7/12 max-w-screen-sm">
+      <h1 className="text-3xl text-[#262626] mb-[48px]">生成器</h1>
       <PasswordText text={passwordText} onReloadClick={flushClick}></PasswordText>
       <PasswordForm generateConfig={generateConfig} onChange={setGenerateConfig} />
     </div>
