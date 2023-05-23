@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import PasswordItem from '../password-items';
+import PasswordItems from '../password-items';
+import { kindData } from '../password-items';
 
 interface Props {
-  listData: Array<object>;
+  listData: Array<kindData>;
 }
 
 export default function PasswordList(props: Props) {
@@ -16,7 +17,7 @@ export default function PasswordList(props: Props) {
   function showList() {
     const items: JSX.Element[] = [];
     for (let i = 0; i < listData.length; i++) {
-      items.push(<PasswordItem></PasswordItem>);
+      items.push(<PasswordItems kindData={listData[i]}></PasswordItems>);
     }
     setPasswordItems(items);
   }
