@@ -4,8 +4,10 @@ import PasswordList from '@/components/password-list';
 import { Button, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
+import { kindData } from '@/components/password-items';
+
 export default function PasswordManager() {
-  const listData = [
+  const listData: kindData[] = [
     {
       name: '重要',
       items: [
@@ -19,6 +21,7 @@ export default function PasswordManager() {
     },
     {
       name: '通用',
+      items: [],
     },
   ];
 

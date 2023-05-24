@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 interface item {
   name: string;
   website: string;
+  password: string;
+  desc: string;
 }
 
 export interface kindData {
