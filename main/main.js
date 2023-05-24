@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
+const url = require('url');
 
 // 判断命令行脚本的第二参数
 const mode = process.argv[2];
@@ -25,7 +26,13 @@ function createWindow() {
     mainWindow.loadURL('http://localhost:3000/'); // 前端开发环境地址
     mainWindow.webContents.openDevTools(); // 自动打开控制台
   } else {
-    mainWindow.loadURL(path.join('file://', __dirname, '../out/password-manager.html'));
+    mainWindow.loadURL(
+      url.format({
+        pathname: path.join(__dirname, '../out/index.html'),
+        protocol: 'file:',
+        slashes: true,
+      })
+    );
   }
 
   mainWindow.once('ready-to-show', () => {
