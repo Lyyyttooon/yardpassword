@@ -1,20 +1,62 @@
 {
   "name": "yardpassword",
   "version": "0.1.0",
-  "description": "a password generator",
   "private": true,
+  "description": "a password generator",
+  "keywords": [
+    "electron",
+    "password",
+    "react"
+  ],
+  "homepage": "https://github.com/Lyyyttooon/yardpassword#readme",
+  "bugs": {
+    "url": "https://github.com/Lyyyttooon/yardpassword/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lyyyttooon/yardpassword.git"
+  },
+  "license": "MIT",
+  "author": "Lyyyttooon",
   "main": "main/main.js",
   "scripts": {
+    "build": "next build",
     "clean": "rimraf dist .next out",
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "prettier": "prettier --write .",
-    "electron:dev": "electron . dev",
+    "dist": "npm run build && electron-builder",
     "electron": "electron .",
+    "electron:dev": "electron . dev",
+    "lint": "next lint",
     "pack": "npm run build && electron-builder --dir",
-    "dist": "npm run build && electron-builder"
+    "prettier": "prettier --write .",
+    "start": "next start"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^13.4.2",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.35",
+    "@types/react-dom": "18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "antd": "^5.4.2",
+    "autoprefixer": "10.4.14",
+    "electron": "^24.3.1",
+    "electron-builder": "^23.6.0",
+    "electron-devtools-installer": "^3.2.0",
+    "eslint": "8.38.0",
+    "eslint-config-next": "^13.4.1",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "next": "^13.4.1",
+    "postcss": "8.4.21",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.0",
+    "tailwindcss": "3.3.1",
+    "typescript": "5.0.4"
   },
   "build": {
     "asar": false,
@@ -22,47 +64,5 @@
       "main",
       "out"
     ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Lyyyttooon/yardpassword.git"
-  },
-  "keywords": [
-    "electron",
-    "password",
-    "react"
-  ],
-  "author": "Lyyyttooon",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Lyyyttooon/yardpassword/issues"
-  },
-  "homepage": "https://github.com/Lyyyttooon/yardpassword#readme",
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.35",
-    "@types/react-dom": "18.0.11",
-    "antd": "^5.4.2",
-    "eslint": "8.38.0",
-    "next": "^13.4.1",
-    "postcss": "8.4.21",
-    "tailwindcss": "3.3.1",
-    "typescript": "5.0.4",
-    "autoprefixer": "10.4.14",
-    "@next/bundle-analyzer": "^13.4.2",
-    "@typescript-eslint/eslint-plugin": "^5.59.0",
-    "@typescript-eslint/parser": "^5.59.0",
-    "electron": "^24.3.1",
-    "electron-builder": "^23.6.0",
-    "electron-devtools-installer": "^3.2.0",
-    "eslint-config-next": "^13.4.1",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8",
-    "rimraf": "^5.0.0"
   }
 }
