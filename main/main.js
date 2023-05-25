@@ -42,8 +42,14 @@ function createWindow() {
     }, 300);
   });
 
-  mainWindow.webContents.on('did-fail-load', function (_event, _code, _desc, url) {
-    mainWindow.loadURL(path.join('file://', __dirname, '../out/' + path.basename(url) + '.html'));
+  mainWindow.webContents.on('did-fail-load', function (_event, _code, _desc, _url) {
+    mainWindow.loadURL(
+      url.format({
+        pathname: path.join(__dirname, '../out/index.html'),
+        protocol: 'file:',
+        slashes: true,
+      })
+    );
   });
 
   mainWindow.on('closed', () => {
