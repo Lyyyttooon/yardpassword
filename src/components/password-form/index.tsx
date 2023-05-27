@@ -1,4 +1,4 @@
-import { Switch, Form, Slider, InputNumber } from 'antd';
+import { Form, InputNumber, Slider, Switch } from 'antd';
 import { useState } from 'react';
 
 import { generateConfig } from '@/utils/password';

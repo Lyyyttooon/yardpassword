@@ -20,43 +20,41 @@
   "author": "Lyyyttooon",
   "main": "main/main.js",
   "scripts": {
-    "build": "next build",
-    "clean": "rimraf dist .next out",
-    "dev": "next dev",
+    "build": "umi build",
+    "clean": "rimraf dist out",
+    "dev": "umi dev",
     "dist": "npm run build && electron-builder",
     "electron": "electron .",
     "electron:dev": "electron . dev",
-    "lint": "next lint",
+    "postinstall": "umi setup",
     "pack": "npm run build && electron-builder --dir",
     "prettier": "prettier --write .",
-    "start": "next start"
+    "setup": "umi setup",
+    "start": "npm run dev"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "umi": "^4.0.69"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^13.4.2",
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.35",
-    "@types/react-dom": "18.0.11",
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
+    "@umijs/plugins": "^4.0.69",
     "antd": "^5.4.2",
     "autoprefixer": "10.4.14",
     "electron": "^24.3.1",
-    "electron-builder": "^23.6.0",
+    "electron-builder": "^24.4.0",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "8.38.0",
-    "eslint-config-next": "^13.4.1",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "next": "^13.4.1",
     "postcss": "8.4.21",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.0",
-    "tailwindcss": "3.3.1",
-    "typescript": "5.0.4"
+    "tailwindcss": "^3",
+    "typescript": "^5.0.3",
+    "umi": "^4.0.69"
   },
   "build": {
     "asar": false,

@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import { reserveChar } from '@/utils/password';
-import { ReloadOutlined, CopyOutlined } from '@ant-design/icons';
+import { CopyOutlined, ReloadOutlined } from '@ant-design/icons';
 import { message } from 'antd';
+import { useEffect, useState } from 'react';
 
 type onClick = () => void;
 

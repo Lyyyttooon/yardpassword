@@ -23,7 +23,7 @@ function createWindow() {
 
   // 判断是否是开发模式
   if (mode === 'dev') {
-    mainWindow.loadURL('http://localhost:3000/'); // 前端开发环境地址
+    mainWindow.loadURL('http://localhost:8000/'); // 前端开发环境地址
     mainWindow.webContents.openDevTools(); // 自动打开控制台
   } else {
     mainWindow.loadURL(

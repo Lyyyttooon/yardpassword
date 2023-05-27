@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import PasswordItems from '../password-items';
-import { kindData } from '../password-items';
+import PasswordItems, { kindData } from '../password-items';
 
 interface Props {
   listData: Array<kindData>;

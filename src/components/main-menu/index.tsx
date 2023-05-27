@@ -1,18 +1,18 @@
-import Link from 'next/link';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
+import { Link } from 'umi';
 
 const items: MenuProps['items'] = [
   {
-    label: <Link href="/password-manager">密码库</Link>,
+    label: <Link to="/password-manager">密码库</Link>,
     key: 'password-manager',
   },
   {
-    label: <Link href="/password-generator">生成器</Link>,
+    label: <Link to="/password-generator">生成器</Link>,
     key: 'password-generator',
   },
   {
-    label: <Link href="/settings">设置</Link>,
+    label: <Link to="/settings">设置</Link>,
     key: 'settings',
   },
 ];

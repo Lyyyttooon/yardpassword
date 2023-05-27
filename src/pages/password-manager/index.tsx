@@ -1,8 +1,8 @@
 'use client';
 
 import PasswordList from '@/components/password-list';
-import { Button, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import { Button, Input } from 'antd';
 
 import { kindData } from '@/components/password-items';
 

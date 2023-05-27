@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import PasswordForm from '@/components/password-form';
 import PasswordText from '@/components/password-text';
 
-import { generatePassword, defaultConfig } from '@/utils/password';
+import { defaultConfig, generatePassword } from '@/utils/password';
 
 export default function PasswordGenerator() {
   const [passwordText, setPasswordText] = useState('');
