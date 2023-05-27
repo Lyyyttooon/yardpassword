@@ -42,16 +42,6 @@ function createWindow() {
     }, 300);
   });
 
-  mainWindow.webContents.on('did-fail-load', function (_event, _code, _desc, _url) {
-    mainWindow.loadURL(
-      url.format({
-        pathname: path.join(__dirname, '../out/index.html'),
-        protocol: 'file:',
-        slashes: true,
-      })
-    );
-  });
-
   mainWindow.on('closed', () => {
     mainWindow.destroy();
   });
