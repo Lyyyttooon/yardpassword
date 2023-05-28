@@ -36,10 +36,7 @@ function createWindow() {
   }
 
   mainWindow.once('ready-to-show', () => {
-    // 防止窗口启动存在瞬间黑画面
-    setTimeout(() => {
-      mainWindow.show();
-    }, 300);
+    mainWindow.show();
   });
 
   mainWindow.on('closed', () => {
