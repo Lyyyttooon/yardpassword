@@ -4,7 +4,7 @@ import { Link } from 'umi';
 
 const items: MenuProps['items'] = [
   {
-    label: <Link to="/password-manager">密码库</Link>,
+    label: <Link to="/">密码库</Link>,
     key: 'password-manager',
   },
   {
