@@ -55,7 +55,7 @@
     "umi": "^4.0.69"
   },
   "build": {
-    "asar": false,
+    "asar": true,
     "files": [
       "main",
       "out"
