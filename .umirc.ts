@@ -8,4 +8,7 @@ export default defineConfig({
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   tailwindcss: {},
   plugins: ['@umijs/plugins/dist/tailwindcss'],
+  codeSplitting: {
+    jsStrategy: 'granularChunks',
+  },
 });
