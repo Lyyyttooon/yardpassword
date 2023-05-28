@@ -1,6 +1,7 @@
+import PasswordItem from '@/components/password-item';
 import { useEffect, useState } from 'react';
 
-interface item {
+export interface item {
   name: string;
   website: string;
   password: string;
@@ -30,7 +31,7 @@ export default function PasswordItems(props: Props) {
     const items: JSX.Element[] = [];
 
     for (let i = 0; i < kindData.items.length; i++) {
-      items.push(<div>{kindData.items[i].name}</div>);
+      items.push(<PasswordItem item={kindData.items[i]} />);
     }
     setListEle(items);
   }
