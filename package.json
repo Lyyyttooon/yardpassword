@@ -2,7 +2,7 @@
   "name": "yardpassword",
   "version": "0.1.0",
   "private": true,
-  "description": "a password generator",
+  "description": "a password manager",
   "keywords": [
     "electron",
     "password",
